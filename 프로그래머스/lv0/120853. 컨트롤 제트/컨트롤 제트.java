@@ -5,19 +5,19 @@ class Solution {
         int answer = 0;
         
         String[] sArray = s.split(" ");
-        List<Integer> list = new ArrayList<>();
+        Stack<Integer> stack = new Stack<>(); //스택 사용
         
         for (int i=0;i<sArray.length;i++){
             if (sArray[i].equals("Z")){
-                list.remove(list.size()-1);
+                stack.pop();
             } else {
-                list.add(Integer.parseInt(sArray[i]));               
+                stack.push(Integer.parseInt(sArray[i]));               
             }
         }
         
-        for (int i=0;i<list.size();i++){
-            answer += list.get(i);
-        }
+        while (!stack.isEmpty()){
+            answer += stack.pop();
+        }    
         
         return answer;
     }
