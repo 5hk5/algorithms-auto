@@ -1,4 +1,4 @@
-import java.util.regex.Pattern;
+import java.util.*;
 
 class Solution {
     public String solution(String polynomial) {
@@ -16,34 +16,28 @@ class Solution {
                     xs += Integer.parseInt(num);
                 }
             } else {
-                if (num.equals("")){
-                    numbers += 1;
-                } else {
                     numbers += Integer.parseInt(num);
-                }
             }
         }
         
-        if (numbers == 0 & xs == 0) {
-            return "" + 0;
-        }
+        StringBuilder sb = new StringBuilder();
         
-        if (xs == 1 && numbers == 0) {
-            return "x";
-        }
-        
-        if (xs ==1 && numbers != 00) {
-            return "x + " + numbers;
+        if (xs==0){
+            
+        } else if (xs==1) {
+            sb.append("x");
+        } else {
+            sb.append(xs + "x");
         }
         
         if (numbers == 0){
-            return xs + "x";
+            return sb.toString();
+        } else if (xs == 0 && numbers != 0) {
+            return sb.append(numbers).toString();
+        } else {
+            sb.append(" + " + numbers);
         }
         
-        if (xs == 0) {
-            return "" + numbers;
-        } 
-        
-        return xs + "x + " + numbers;
+        return sb.toString();
     }
 }
