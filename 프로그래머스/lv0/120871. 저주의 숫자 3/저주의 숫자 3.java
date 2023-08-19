@@ -5,8 +5,8 @@ class Solution {
         for (int i=1;i<=n;i++){    
             num++;
             
-            while (num%3==0 || num%10==3 || num/10==3 || (num/10)%10==3){
-                num++;
+            if (num%3==0 || String.valueOf(num).contains("3")){
+                i--;
             }    
             
         }
