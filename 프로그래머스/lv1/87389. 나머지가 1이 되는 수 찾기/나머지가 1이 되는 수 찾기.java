@@ -1,10 +1,8 @@
 class Solution {
-    public int solution(int n) {
-        n = n-1;
-        
-        int count = 2;
+    public int solution(int n) {        
+        int count = 1;
         while (count <= n){
-            if (n % count == 0) break;
+            if (n % count == 1) break;
             count++;
         }
         
