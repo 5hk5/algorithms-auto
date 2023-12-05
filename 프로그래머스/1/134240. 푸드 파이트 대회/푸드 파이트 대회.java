@@ -1,18 +1,17 @@
 import java.util.*;
 
 class Solution {
-    public String solution(int[] food) {
-        StringBuilder answer = new StringBuilder();
+    public String solution(int[] food) {        
+        String answer = "";
         
-        String first = "";
         for (int i=1;i<food.length;i++){
             int num = food[i] / 2;
             
             for (int j=0;j<num;j++){
-                first += i;
+                answer += i;
             }
         }
         
-        return first + "0" + new StringBuilder(first).reverse().toString();
+        return answer + "0" + new StringBuilder(answer).reverse().toString();
     }
 }
