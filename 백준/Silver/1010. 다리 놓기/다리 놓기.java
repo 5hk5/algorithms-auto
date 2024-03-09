@@ -17,6 +17,21 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
 
+        /* 조합 공식 활용 (eCw)
+         * eC0 = eCe = 1
+         * e+1Cw+1 = eCw + eCw+1
+         * */
+        for (int i=0;i<30;i++){
+            dp[i][i] = 1;
+            dp[i][0] = 1;
+        }
+
+        for (int i=2;i<30;i++){
+            for (int j=1;j<30;j++){
+                dp[i][j] = dp[i-1][j-1] + dp[i-1][j];
+            }
+        }
+
         int T = Integer.parseInt(br.readLine());
         for (int i=0;i<T;i++){
             st = new StringTokenizer(br.readLine(), " ");
@@ -24,20 +39,16 @@ public class Main {
             int w = Integer.parseInt(st.nextToken());
             int e = Integer.parseInt(st.nextToken());
 
-            System.out.println(countBridges(e, w));
+            System.out.println(dp[e][w]);
         }
     }
 
-    /* 조합 공식 활용 (eCw)
-     * eC0 = eCe = 1
-     * e+1Cw+1 = eCw + eCw+1
-     * */
-    private static int countBridges(int e, int w) {
+/*    private static int countBridgesWithRecursion(int e, int w) {
         if (dp[e][w] > 0) return dp[e][w]; // 배열에 저장된 값은 바로 반환
 
         if (w == 0 || w == e) return dp[e][w] = 1; // 공식 1 활용
 
-        return dp[e][w] = countBridges(e-1, w-1) + countBridges(e-1, w); // 공식 2 활용
-    }
+        return dp[e][w] = countBridgesWithRecursion(e-1, w-1) + countBridgesWithRecursion(e-1, w); // 공식 2 활용
+    }*/
 
 }
