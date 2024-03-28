@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -40,7 +39,8 @@ public class Main {
 
         // 투 포인터
         while(end < temperature.length - 1){
-            tempSum += temperature[++end] - temperature[start++];
+            tempSum += temperature[++end];
+            tempSum -= temperature[start++];
 
             max = Math.max(max, tempSum);
         }
