@@ -16,13 +16,20 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int length = Integer.parseInt(br.readLine());
         String str = br.readLine();
+        long M = 1234567891;
+        long pow = 1;
 
         long sum = 0;
         for (int i=0;i<length;i++){
-            sum += ((str.charAt(i) - 'a' +1) * Math.pow(31, i)) % 1234567891;
+            // sum += ((str.charAt(i) - 'a' +1) * Math.pow(31, i)) % M;
+            //sum += (((str.charAt(i) - 'a' +1) % M) * (Math.pow(31, i)) % M) % M;
+            sum += (str.charAt(i)-'a'+1) * pow % M;
+            pow = pow * 31 % M;
         }
 
-        System.out.println(sum);
+        long answer = sum % M;
+
+        System.out.println(answer);
     }
 
 }
