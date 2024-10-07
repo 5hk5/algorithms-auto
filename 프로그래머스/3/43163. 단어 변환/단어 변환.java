@@ -23,17 +23,17 @@ class Solution {
 
         while (!queue.isEmpty()) {
             int size = queue.size();
-            count++; // 한 단계가 끝날 때마다 변환 횟수 증가
+            count++; 
 
-            // 현재 큐에 있는 모든 단어들에 대해 한 글자 차이 나는 단어로 변환
-            for (int i = 0; i < size; i++) {
+            for (int i=0;i<size;i++) {
                 String currentWord = queue.poll();
 
-                // words 리스트에서 아직 방문하지 않은 단어들 중 한 글자 차이 나는 단어 탐색
                 for (String word : wordList) {
+                    // 미방문 & 한 글자 차이 시
                     if (!visited.contains(word) && canTransform(currentWord, word)) {
-                        if (word.equals(target)) return count; 
+                        if (word.equals(target)) return count; // target 여부 확인
                         
+                        // queue, visited 삽입
                         queue.offer(word);
                         visited.add(word);
                     }
@@ -47,7 +47,7 @@ class Solution {
     public static boolean canTransform(String word1, String word2) {
         int diffCount = 0;
         
-        for (int i = 0; i < word1.length(); i++) {
+        for (int i=0;i<word1.length();i++) {
             if (word1.charAt(i) != word2.charAt(i)) {
                 diffCount++;
             }
